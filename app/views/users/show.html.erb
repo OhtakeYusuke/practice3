@@ -1,8 +1,8 @@
-<h1>ユーザ詳細/h1>
+<h1>ユーザ詳細</h1>
 
 <%= @user.name %>
 <%= link_to 'ユーザ編集', edit_user_path %>
-<% @user.post.each do |user_post| %>
+<% @user.posts.each do |user_post| %>
   <div>
     <%= link_to user_post.name , post_path %>
   </div>

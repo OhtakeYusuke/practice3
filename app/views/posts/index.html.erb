@@ -2,6 +2,13 @@
 
 <%= link_to "新規投稿", new_post_path %>
 
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont, "名前検索" %>
+  <%= f.search_field :name_cont, placeholder: "名前を検索"%>
+  <%= f.submit "検索" %>
+<% end %>
+
 <% @posts.each do |post|%>
   <div>
     <%= link_to post.user.name , user_path(post.user) %>
@@ -9,3 +16,6 @@
     <%= post.description %>
   </div>
 <% end %>
+
+<%= paginate @posts %>
+<%= page_entries_info @posts %>

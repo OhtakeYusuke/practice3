@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.create(user_params)
+      session[:user_id] = @user.id
       redirect_to root_path, notice: "ユーザの編集を終えました"
     else
       render :new
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:params).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password)
   end
   
   def find_user_id

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: session_params[:email])
-    if @user&.authenticate(password: session_params[:password])
+    if @user&.authenticate(session_params[:password])
       session[:user_id] = @user.id
       redirect_to root_path, notice: "ログインが完了しました"
     else
@@ -14,12 +14,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    session[:user_id] = nil
+    redirect_to root_path, notice: "ログアウトしました"
   end
 
   private
   
   def session_params
-    params.require(:params).permit(:email, :password)
+    params.require(:session).permit(:email, :password)
   end
 end

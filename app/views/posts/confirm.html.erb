@@ -1,0 +1,21 @@
+
+<h1>確認画面</h1>
+
+<%= form_with model: @post, local: true do |f| %>
+  <div>
+    <%= f.label :name %>
+  </div>
+  <div>
+    <%= @post.name %>
+    <%= f.hidden_field :name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+  </div>
+  <div>
+    <%= @post.description %>
+    <%= f.hidden_field :description %>
+  </div>
+  <%= f.submit "新規作成" %>
+  <%= f.submit "戻る", name: "back"%>
+<% end %>
