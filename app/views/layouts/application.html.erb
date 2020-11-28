@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <div>
+      <%= breadcrumbs separator: "&gt;" %>
+    </div>
     <% if flash.notice.present? %>
       <%= flash.notice %>
     <% end %>
